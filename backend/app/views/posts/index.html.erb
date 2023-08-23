@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+<div class="container">
+  <h1>My Blog Posts</h1>
+
+  <div id="posts">
+  <% if @posts.count == 0  %>
+      <h5>No posts yet</h5>
+  <% else %>
+    <% @posts.each do |post| %>
+      <%= render post %>
+      <p>
+        <%= link_to "Read this post", post, class:"btn btn-primary" %>
+      </p>
+    <% end %>
+  <% end %>
+  </div>
+
+  
+</div>
