@@ -12,6 +12,7 @@ class PostsController < ApplicationController
     @comments = @post.comments.order(created_at: :desc)
     respond_to do |format|
       format.html
+      format.json { render json: {post: @post,comments: @comments}}
       format.pdf do
         render pdf: "post-id-#{@post.id}-comments-pdf", template: "posts/pdf", formats: [:html]
       end
@@ -21,6 +22,10 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    respond_to do |format|
+      format.html
+      format.json { render json: {post: @post}}
+    end
   end
 
   # GET /posts/1/edit
