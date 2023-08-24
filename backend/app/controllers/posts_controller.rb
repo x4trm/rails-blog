@@ -10,6 +10,12 @@ class PostsController < ApplicationController
   def show
     @post.update(views: @post.views+1)
     @comments = @post.comments.order(created_at: :desc)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "post-id-#{@post.id}-comments-pdf", template: "posts/pdf", formats: [:html]
+      end
+    end
   end
 
   # GET /posts/new

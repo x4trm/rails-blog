@@ -5,6 +5,7 @@
   <% if current_user and current_user.role == 'admin' %>
       <h4>Admin Actions</h4>
     <%= link_to "Edit this post", edit_post_path(@post), class:"btn btn-info" %>
+    <%= link_to "Generate PDF",post_path(@post,format: :pdf),class:"btn btn-warning"%>
     <%= button_to "Delete", @post, method: :delete, class: "btn btn-danger my-3" %>
   <% end %>
   </div>

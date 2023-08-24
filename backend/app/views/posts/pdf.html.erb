@@ -1,0 +1,15 @@
+<div class="container">
+<h1>Post ID: <%= @post.id %></h1>
+<h2>Post Title: <%= @post.title %></h2>
+<p>Time Zone to: <%= Time.zone ="Poland"%></p>
+<p>PDF Generation Date: <%= Time.zone.now %></p>
+  <% if @comments.count == 0 %>
+    <p>No comments</p>
+  <%else%>
+    <p class="my-2">Comments: <%= @comments.count %></p>
+    <% @comments.each do |comment| %>
+      <%= render 'comments/comment_pdf', post: @post, comment: comment %>
+    <% end %>
+  <% end %>
+  </div>
+</div>
