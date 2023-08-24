@@ -8,4 +8,19 @@
     <%= button_to "Delete", @post, method: :delete, class: "btn btn-danger my-3" %>
   <% end %>
   </div>
+  <div>
+  <% if current_user %>
+    <%= render 'comments/form',post: @post %>
+  <% else %>
+    <h5>If you want comment this post, you must be logged in</h5>
+  <% end %>
+  <% if @comments.count == 0 %>
+    <p>Not comments yet</p>
+  <%else%>
+    <p class="my-2">Comments: <%= @comments.count %></p>
+    <% @comments.each do |comment| %>
+      <%= render 'comments/comment', post: @post, comment: comment %>
+    <% end %>
+  <% end %>
+  </div>
 </div>
